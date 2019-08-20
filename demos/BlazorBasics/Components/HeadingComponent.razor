@@ -20,10 +20,8 @@
             A check box sets the font style and is bound to the
             _italicsCheck field.
         *@
-        <input type="checkbox" id="italicsCheck"
-               @bind="_italicsCheck" />
-        <label class="form-check-label"
-               for="italicsCheck">Use italics</label>
+        <input type="checkbox" id="italicsCheck" @bind="_italicsCheck" />
+        <label class="form-check-label" for="italicsCheck">Use italics</label>
     </div>
 
     @*
@@ -37,8 +35,7 @@
 
 @code {
     private static TextInfo _tinfo = CultureInfo.CurrentCulture.TextInfo;
-    private string _headingText =
-        _tinfo.ToTitleCase("welcome to blazor!");
+    private string _headingText = _tinfo.ToTitleCase("welcome to blazor!");
     private string _headingFontStyle = "normal";
     private bool _italicsCheck = false;
 
