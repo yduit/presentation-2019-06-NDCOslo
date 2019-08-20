@@ -4,6 +4,8 @@
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
+<p>Total temperature this week:
+    @forecasts?.Sum(f=>f.TemperatureC) degree</p>
 
 @if (forecasts == null)
 {
@@ -23,21 +25,22 @@ else
         <tbody>
             @foreach (var forecast in forecasts)
             {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
+            <tr>
+                <td>@forecast.Date.ToShortDateString()</td>
+                @*<td>@forecast.TemperatureC</td>*@
+                <td><input type="number" @bind="@forecast.TemperatureC" /></td>
+                <td>@forecast.TemperatureF</td>
+                <td>@forecast.Summary</td>
+            </tr>
             }
         </tbody>
     </table>
 }
 
-@functions {
+@code {
     WeatherForecast[] forecasts;
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetJsonAsync<WeatherForecast[]>("sample-data/weather.json");
     }
@@ -48,7 +51,7 @@ else
 
         public int TemperatureC { get; set; }
 
-        public int TemperatureF { get; set; }
+        public int TemperatureF => TemperatureC * 2 + 30;
 
         public string Summary { get; set; }
     }
