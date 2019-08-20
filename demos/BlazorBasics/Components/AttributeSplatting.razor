@@ -1,0 +1,39 @@
+﻿<input id="useIndividualParams"
+       maxlength="@Maxlength"
+       placeholder="@Placeholder"
+       required="@Required"
+       size="@Size" />
+
+<input id="useAttributesDict"
+       @attributes="InputAttributes" />
+
+<input @bind="StartDate" @bind:format="yyyy-MM-dd" />
+
+
+@code {
+    [Parameter]
+    public string Maxlength { get; set; } = "10";
+
+    [Parameter]
+    public string Placeholder { get; set; } = "Input placeholder text";
+
+    [Parameter]
+    public string Required { get; set; } = "required";
+
+    [Parameter]
+    public string Size { get; set; } = "50";
+
+    [Parameter]
+    public Dictionary<string, object> InputAttributes { get; set; } =
+        new Dictionary<string, object>()
+        {
+            { "maxlength", "10" },
+            { "placeholder", "Input placeholder text" },
+            { "required", "required" },
+            { "size", "50" }
+                };
+    [Parameter]
+    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+
+
+}
