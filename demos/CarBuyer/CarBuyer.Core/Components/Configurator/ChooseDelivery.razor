@@ -30,7 +30,7 @@
     EditContext editContext;
     [CascadingParameter] CustomerOrder Order { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
         editContext = new EditContext(Order.Delivery ?? new object());
     }
