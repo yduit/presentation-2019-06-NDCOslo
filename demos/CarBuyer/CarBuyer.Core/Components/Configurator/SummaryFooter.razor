@@ -14,7 +14,7 @@
 @functions {
     [Parameter] public CustomerOrder Order { get; set; }
     [Parameter] public string NextUrl { get; set; }
-    [Parameter public EventCallback OnNext { get; set; }
+    [Parameter] public EventCallback OnNext { get; set; }
 
     async Task MoveNext()
     {

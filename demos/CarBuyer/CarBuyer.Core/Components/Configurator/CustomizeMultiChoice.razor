@@ -25,7 +25,7 @@
 @functions {
     [Parameter] public MultiChoiceCustomization Data { get; set; }
     [Parameter] public ICustomizationChoice Value { get; set; }
-    [Parameter public EventCallback<ICustomizationChoice> ValueChanged { get; set; }
+    [Parameter] public EventCallback<ICustomizationChoice> ValueChanged { get; set; }
 
     private MultiChoiceOption ChosenOption
     {
