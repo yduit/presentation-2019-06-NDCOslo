@@ -5,9 +5,9 @@
     <ValidationMessage For="@ValueExpression" />
 </div>
 @functions {
-    [Parameter] string Class { get; set; }
-    [Parameter] string Label { get; set; }
-    [Parameter] string Value { get; set; }
-    [Parameter] EventCallback<string> ValueChanged { get; set; }
-    [Parameter] Expression<Func<string>> ValueExpression { get; set; }
+    [Parameter] public string Class { get; set; }
+    [Parameter] public string Label { get; set; }
+    [Parameter] public string Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public Expression<Func<string>> ValueExpression { get; set; }
 }
