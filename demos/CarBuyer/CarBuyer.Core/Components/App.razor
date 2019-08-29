@@ -16,7 +16,7 @@ else
     private CustomerOrder order;
     private ProductCatalog catalog;
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         catalog = await catalogService.FetchCatalogAsync();
         order = new CustomerOrder(catalog);
