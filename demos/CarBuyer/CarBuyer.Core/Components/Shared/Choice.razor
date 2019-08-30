@@ -8,10 +8,10 @@
     [CascadingParameter] IChoiceGroup Group { get; set; }
 
     // Regular parameters, including one with generic type inference
-    [Parameter] RenderFragment ChildContent { get; set; }
-    [Parameter] string Class { get; set; }
-    [Parameter] string Style { get; set; }
-    [Parameter] TValue Value { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Class { get; set; }
+    [Parameter] public string Style { get; set; }
+    [Parameter] public TValue Value { get; set; }
 
     string SelectedClass
         => Value != null && Value.Equals(Group.Value) ? "selected" : "";

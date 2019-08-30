@@ -15,9 +15,9 @@
 </div>
 
 @functions {
-    [Parameter] ColorCustomization Data { get; set; }
-    [Parameter] ICustomizationChoice Value { get; set; }
-    [Parameter] EventCallback<ICustomizationChoice> ValueChanged { get; set; }
+    [Parameter] public ColorCustomization Data { get; set; }
+    [Parameter] public ICustomizationChoice Value { get; set; }
+    [Parameter] public EventCallback<ICustomizationChoice> ValueChanged { get; set; }
 
     private PaintColor ValueColor
     {

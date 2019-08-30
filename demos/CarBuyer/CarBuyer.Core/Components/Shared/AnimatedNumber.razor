@@ -5,9 +5,9 @@
     bool isAnimating;
     decimal animationCurrentValue;
 
-    [Parameter] string Class { get; set; }
-    [Parameter] decimal Value { get; set; }
-    [Parameter] string Format { get; set; }
+    [Parameter] public string Class { get; set; }
+    [Parameter] public decimal Value { get; set; }
+    [Parameter] public string Format { get; set; }
 
     protected override void OnParametersSet()
     {

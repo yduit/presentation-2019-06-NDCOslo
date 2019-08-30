@@ -8,12 +8,12 @@
 
 @functions {
     // Typical parameters: attributes and child content
-    [Parameter] RenderFragment ChildContent { get; set; }
-    [Parameter] string Class { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Class { get; set; }
 
     // Hook into binding system via Foo + FooChanged pattern
-    [Parameter] public TValue Value { get; private set; }
-    [Parameter] EventCallback<TValue> ValueChanged { get; set; }
+    [Parameter] public TValue Value { get; set; }
+    [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
 
     string SelectedClass
         => Value != null ? "has-selection" : "";
