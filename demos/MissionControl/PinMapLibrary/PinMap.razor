@@ -1,7 +1,7 @@
 @inject Microsoft.JSInterop.IJSRuntime JS
 @typeparam TPin
 
-<div class="pin-map" @ref="mapElem">
+<div class="pin-map" @ref="mapElem" @ref:suppressField>
     @foreach (var item in Data)
     {
         <map-pin @key="item" data-longitude="@PinLongitude(item)" data-latitude="@PinLatitude(item)">
@@ -11,12 +11,12 @@
 </div>
 
 @code {
-    ElementRef mapElem;
+    ElementReference mapElem;
 
-    [Parameter] IEnumerable<TPin> Data { get; set; }
-    [Parameter] Func<TPin, double> PinLongitude { get; set; }
-    [Parameter] Func<TPin, double> PinLatitude { get; set; }
-    [Parameter] RenderFragment<TPin> PinTemplate { get; set; }
+    [Parameter] public IEnumerable<TPin> Data { get; set; }
+    [Parameter] public Func<TPin, double> PinLongitude { get; set; }
+    [Parameter] public Func<TPin, double> PinLatitude { get; set; }
+    [Parameter] public RenderFragment<TPin> PinTemplate { get; set; }
 
     protected override Task OnAfterRenderAsync()
         => JS.InvokeAsync<object>(
