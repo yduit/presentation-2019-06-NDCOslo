@@ -3,7 +3,7 @@
 
 <EditForm Model="@credentials" OnValidSubmit="@SubmitCredentials">
     <DataAnnotationsValidator />
-    <MdcDialog @ref="dialog" Title="Log in">
+    <MdcDialog @ref="dialog" @ref:suppressField Title="Log in">
         <Body>
             <MdcTextField Label="Username" @bind-Value="@credentials.UserName" />
             <ValidationMessage For="@(() => credentials.UserName)" />
