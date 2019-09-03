@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
 using System.Text;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace MissionControl.Server
 {
@@ -25,7 +27,9 @@ namespace MissionControl.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddNewtonsoftJson();
+            services.AddMvc().AddNewtonsoftJson()
+                .AddRazorPagesOptions(options => { options.RootDirectory = "/"; });
+            services.AddServerSideBlazor();
             services.AddResponseCompression(opts =>
             {
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
@@ -59,7 +63,10 @@ namespace MissionControl.Server
 
             app.UseClientSideBlazorFiles<Client.Startup>();
             app.UseStaticFiles();
-
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.GetFullPath("..\\MissionControl.Client\\wwwroot"))
+            });
             app.UseRouting();
 
             app.UseAuthentication();
@@ -68,6 +75,7 @@ namespace MissionControl.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
                 endpoints.MapFallbackToClientSideBlazor<Client.Startup>("index.html");
             });
         }
