@@ -1,5 +1,5 @@
 ﻿@page "/agents-list"
-@attribute [Authorize]
+@*@attribute [Authorize]*@
 @inject HttpClient Http
 @inject TokenAuthenticationStateProvider TokenProvider
 
@@ -42,7 +42,7 @@ else
     {
         var token = await TokenProvider.GetTokenAsync();
         agents = await Http.GetJsonAsync<Agent[]>(
-            "api/agents",
-            new AuthenticationHeaderValue("Bearer", token));
+            "api/agents" /*,
+            new AuthenticationHeaderValue("Bearer", token)*/);
     }
 }

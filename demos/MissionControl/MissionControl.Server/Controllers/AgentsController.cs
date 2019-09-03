@@ -9,7 +9,7 @@ namespace MissionControl.Server.Controllers
     [ApiController]
     public class AgentsController : Controller
     {
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public IEnumerable<Agent> GetAgents()
         {
